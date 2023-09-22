@@ -1,0 +1,19 @@
+.tables{
+    width: 75%;
+    padding: 20px;
+}
+
+img{
+    width: 35%;
+}
+
+@media(max-width:990px){
+    .tables{
+        width: 100%;
+        padding: 10px;
+    }
+    
+    img{
+        width: 50%;
+    }
+}

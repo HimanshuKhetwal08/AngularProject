@@ -1,0 +1,100 @@
+<div class="container-fluid tables">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table text-center table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of products; index as i">
+                        <td style="width: 25%;">
+
+                            <img src="{{prod.productImage}}" alt="">
+                            <p>{{prod.productName}}</p>
+
+                        </td>
+                        <td>{{prod.price}}</td>
+                        <td>
+                            {{prod.quantity}}
+                        </td>
+                        <td>{{ prod | calculateTotal }}</td>
+                        <td><button class="btn" (click)="removeProduct(i)"><i
+                                    class="fa-solid fa-xmark fs-4"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="col-md-4" *ngIf="check>0">
+
+            <h3 class="text-center fw-bold">Fill the Details</h3>
+            <form [formGroup]="coustomerDetailsForm">
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input type="text" id="name" class="form-control" placeholder="Enter your Firstname"
+                            formControlName="firstName">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input type="text" id="phone" class="form-control" placeholder="Enter your Lastname"
+                            formControlName="lastName">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input type="text" id="subject" class="form-control" placeholder="Enter Mobile number"
+                            formControlName="phone">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input type="text" id="subject" class="form-control" placeholder="Enter the Address"
+                            formControlName="address">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input type="email" id="subject" class="form-control" placeholder="Enter the Email"
+                            formControlName="email">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input placeholder="D.O.B" class="form-control" type="text" onfocus="(this.type='date')"
+                            id="date" formControlName="dob" (input)="calculateAge()">
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <input type="text" id="subject" class="form-control" placeholder="Enter Age"
+                            formControlName="age">
+                    </div>
+                </div>
+
+
+
+                <div class="row mb-4">
+                    <div class="col-md">
+                        <h4>Grand Total: Rs. {{ products | subTotal }}</h4>
+                        <button class="btn btn-success" (click)="showDetails()"> Proceed </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

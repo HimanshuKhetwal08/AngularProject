@@ -1,0 +1,11 @@
+.main-navbar {
+  width: 80%;
+  padding: 2rem;
+  margin: auto;
+}
+
+@media (max-width: 990px) {
+  .main-navbar {
+    width: 100%;
+  }
+}
